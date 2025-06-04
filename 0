@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_qiblah/flutter_qiblah.dart';
+import 'package:geolocator/geolocator.dart';
+
+class ArahKiblatPage extends StatefulWidget {
+  const ArahKiblatPage({super.key});
+
+  @override
+  _ArahKiblatPageState createState() => _ArahKiblatPageState();
+}
+
+class _ArahKiblatPageState extends State<ArahKiblatPage> {
+  final _locationPermission = Geolocator.requestPermission();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Arah Kiblat')),
+      body: FutureBuilder(
+        future: _locationPermission,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError || snapshot.data == LocationPermission.denied) {
+            return const Center(child: Text('Izin lokasi dibutuhkan untuk menentukan arah kiblat'));
+          } else {
+            return const QiblahCompass();
+          }
+        },
+      ),
+    );
+  }
+}
+
+class QiblahCompass extends StatelessWidget {
+  const QiblahCompass({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QiblahDirection>(
+      stream: FlutterQiblah.qiblahStream,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return const Center(child: Text('Tidak dapat mengambil data arah kiblat'));
+        }
+        
+        final qiblahDirection = snapshot.data!;
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Transform.rotate(
+                angle: qiblahDirection.qiblah * (3.141592653589793 / 180),
+                child: Image.asset('assets/compass.png', width: 200),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                "Arah Kiblat: ${qiblahDirection.offset.toStringAsFixed(2)}°",
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
