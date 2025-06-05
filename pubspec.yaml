@@ -1,24 +1,30 @@
-name: flutter_application_1  
-description: "A new Flutter project."  
-publish_to: 'none'  
-version: 0.1.0  
+name: flutter_application_1
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
 
-environment:  
-  sdk: '>=3.4.4 <4.0.0'  
+environment:
+  sdk: '>=3.4.4 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-    
 
   # 🔹 Paket untuk arah kiblat dan kompas
   flutter_html: ^3.0.0-beta.2
-  flutter_layout_grid: ^2.0.0  # cek versi terbaru
-  flutter_math_fork: ^0.6.0  
+  flutter_layout_grid: ^2.0.0
+  flutter_math_fork: ^0.6.0
   intl: ^0.18.0
-  persistent_bottom_nav_bar: ^5.0.2 
+
+  # Jika ingin menggunakan versi v2 dari persistent_bottom_nav_bar, biarkan baris ini:
+  # persistent_bottom_nav_bar_v2: ^6.0.1
+
+  # Jika ingin menggunakan salinan lokal persistent_bottom_nav_bar (versi 5.0.2):
+  persistent_bottom_nav_bar:
+    path: local_packages/persistent_bottom_nav_bar
+
   # 🔹 Paket untuk mendapatkan lokasi pengguna (GPS)
-  geolocator: ^13.0.2 
+  geolocator: ^13.0.2
 
   # 🔹 Paket untuk komunikasi dengan API menggunakan HTTP
   http: ^1.3.0
@@ -30,15 +36,14 @@ dependencies:
   provider: ^6.0.5
 
   # 🔹 Paket untuk memberikan jarak (spacing) yang konsisten
-  gap: ^3.0.1 
+  gap: ^3.0.1
 
-dev_dependencies:  
-  flutter_test:  
-    sdk: flutter  
-  flutter_lints: ^4.0.0  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
 
-flutter:  
-  uses-material-design: true  
+flutter:
+  uses-material-design: true
 
-  assets:  
-    - assets/compass.jpeg
+  assets:

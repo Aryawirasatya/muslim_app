@@ -77,7 +77,7 @@ class TentangAplikasiScreen extends StatelessWidget {
 
             // Versi aplikasi atau copyright
             Text(
-              "Versi 1.0.0",
+              "Versi 02398532513",
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey.shade600,
