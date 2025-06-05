@@ -7,12 +7,19 @@ class TentangAplikasiScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Tentang Aplikasi"),
+        title: const Text(
+          "tentang aplikasi",
+          style: TextStyle(
+            color: Colors.white, // Ganti warna sesuai keinginan
+            fontSize: 20, // Sesuaikan ukuran teks jika diperlukan
+            fontWeight: FontWeight.bold, // Tambahkan efek bold jika diinginkan
+          ),
+        ),
         backgroundColor: Colors.teal.shade700,
-        elevation: 4,
         centerTitle: true,
+        elevation: 6,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
         ),
       ),
       body: Container(

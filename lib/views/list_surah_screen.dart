@@ -35,12 +35,20 @@ class _ListSurahScreenState extends State<ListSurahScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: const Text("Daftar Surah"),
+        title: const Text(
+          "Surah",
+          style: TextStyle(
+            color: Colors.white, // Ganti warna sesuai keinginan
+            fontSize: 20, // Sesuaikan ukuran teks jika diperlukan
+            fontWeight: FontWeight.bold, // Tambahkan efek bold jika diinginkan
+          ),
+        ),
+        backgroundColor: Colors.teal.shade700,
         centerTitle: true,
-        backgroundColor: backgroundColor,
-        elevation: 4,
-        shadowColor: Colors.black26,
-        foregroundColor: textPrimary,  // warna tulisan dan ikon AppBar hitam gelap
+        elevation: 6,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
       ),
       body: SafeArea(
         child: viewModel.isLoadingChapters

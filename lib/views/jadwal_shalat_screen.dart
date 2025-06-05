@@ -53,8 +53,15 @@ class _JadwalShalatScreenState extends State<JadwalShalatScreen> {
     final viewModel = Provider.of<JadwalShalatViewModel>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Jadwal Shalat"),
+     appBar: AppBar(
+        title: const Text(
+          "Jadwal Shalat",
+          style: TextStyle(
+            color: Colors.white, // Ganti warna sesuai keinginan
+            fontSize: 20, // Sesuaikan ukuran teks jika diperlukan
+            fontWeight: FontWeight.bold, // Tambahkan efek bold jika diinginkan
+          ),
+        ),
         backgroundColor: Colors.teal.shade700,
         centerTitle: true,
         elevation: 6,
